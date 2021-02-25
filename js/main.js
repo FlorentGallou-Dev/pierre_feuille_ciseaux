@@ -22,3 +22,5 @@ if (userChoice === cmpChoice) {
 }else if(userChoice === "rock" && cmpChoice === "scissors" || userChoice === "paper" && cmpChoice === "rock" || userChoice === "scissors" && cmpChoice === "paper") { // test every win solutions
     alert("All right " + userName + " !!!\nYou won !");
 }else {alert("Outch " + userName + ", you loose.\nBad luck this time.");} // rest the lost solutions
+
+alert("End of the game.");
