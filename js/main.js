@@ -3,7 +3,12 @@ function welcome() {
 }
 
 function userInformations(){
-    userChoice = prompt("So " + userName + ",\n Please chose between :\n rock or paper or scissors and write it down here.");
+    do {userChoice = prompt("So " + userName + ",\n Please chose between :\n rock or paper or scissors and write it down here.");
+        userChoice = userChoice.toLowerCase();
+        if (userChoice !== pfcTab[0] && userChoice !== pfcTab[1] && userChoice !== pfcTab[2]) {
+            alert("Bad entry " + userName + " !!!\nPlease be sure to type :\n                   rock or paper or scissors");
+        }
+} while (userChoice !== "rock" && userChoice !== "paper" && userChoice !== "scissors");
     return "You choosed :\n" + userChoice;
 }
 
@@ -53,7 +58,8 @@ welcome();
     
 // ask player name till doesnt fit betwin 2 and 20 char
 do {userName = prompt("Enter your best gamer Alias :\n-between 2 and 20 character max-");
-} while (userName.length < 2 || userName.length > 20)
+    if (userName.length < 2 || userName.length > 20) {alert("No way !!!\nPlease be kind, only loosers try to cheat :\nEnter your true WINNER Alias :\n-between 2 and 20 character max-");}
+} while (userName.length < 2 || userName.length > 20);
 
 // Restart the game loop
 

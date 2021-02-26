@@ -16,5 +16,6 @@ So please, don't push youself and enjoy a pleasant random-chance-base-non-neuron
 > 6. 25-02-2021 : 00h28 - Added tests for result.
 > 7. 25-02-2021 : 00h33 - Added an ending message.
 > 8. 25-02-2021 : 10h35 - Modified to functions, loops for 3 turn game and restart => Everithing is working fine
+> 9. 25-02-2021 : 11h45 - Finished modify test PFC user entry and testing entries - Everything is all good !!!
 
 -----
