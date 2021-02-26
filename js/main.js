@@ -31,7 +31,7 @@ function scoreFinal(userS, cmpS) {
     }else if (userS === nbTurn) {
         return "All right " + userName + " !!!\nYou won da game !";
     }else if (cmpS === nbTurn) {
-        return "Outch " + userName + ", you loose the game.\nBad luck this time.";
+        return "Outch " + userName + ", you lost the game.\nBad luck this time.";
     }else {return false;}
 }
 
@@ -48,18 +48,24 @@ var pfcTab = [
 ];
 var verif = false;
 var restart = true;
-alert(restart + " " + typeof(restart));
 
+welcome();
+    
+// ask player name till doesnt fit betwin 2 and 20 char
+do {userName = prompt("Enter your best gamer Alias :\n-between 2 and 20 character max-");
+} while (userName.length < 2 || userName.length > 20)
 
 // Restart the game loop
 
 while (restart !== "false") {
-    welcome();
-    
-    do {userName = prompt("Enter your best gamer Alias :\n(-between 2 and 20 character max-");
-    } while (userName.length < 2 || userName.length > 20)
+    // New game, reset parameters
+    userScore = 0;
+    cmpScore = 0;
+    verif = false;
 
-    while (verif) {
+    // loop till nbTurn not reached
+
+    while (verif === false) {
         alert(userInformations());
         alert(cmpTurn());
         // Time to confront both player
@@ -71,7 +77,5 @@ while (restart !== "false") {
     alert(scoreFinal(userScore, cmpScore))
     alert("End of the game.");
     restart = prompt("Again ?\nAm I right to say you want to play again ?\nType : true or false"); // not working
-    
-    alert(restart + " " + typeof(restart));
 }
 alert("Goodby !!!");
