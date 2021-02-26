@@ -1,26 +1,77 @@
-alert("Welcome to you new favorit break in the day\n it's time for\n             ROCK PAPER SCISSORS\n                                         enjoy");
-var userName = prompt("Enter your best gamer Alias :");
-var userChoice = prompt("So " + userName + ",\n Please chose between :\n rock or paper or scissors and write it down here.");
-alert("You choosed : " + userChoice);
+function welcome() {
+    alert("Welcome to you new favorit break in the day\n it's time for\n             ROCK PAPER SCISSORS\n                                         enjoy");
+}
 
+function userInformations(){
+    userChoice = prompt("So " + userName + ",\n Please chose between :\n rock or paper or scissors and write it down here.");
+    return "You choosed :\n" + userChoice;
+}
+
+function cmpTurn(){
+    // Create a random value between index of the array between 0-3 here
+    cmpChoice = Math.floor(Math.random() * pfcTab.length);
+    cmpChoice = pfcTab[cmpChoice];
+    return "Take notice :\nYour nemesis (thit computer) choosed :\n" + cmpChoice;
+}
+
+function result(userR, cmpR) {
+    // first test equality
+    if (userR === cmpR) {
+        userScore +=1;
+        cmpScore +=1;
+    }else if(userR === "rock" && cmpR === "scissors" || userR === "paper" && cmpR === "rock" || userR === "scissors" && cmpR === "paper") { // test every win solutions
+        return userScore += 1;
+    }else {return cmpScore += 1;} // rest the lost solutions
+}
+
+function scoreFinal(userS, cmpS) {
+    
+    if (userS === nbTurn && cmpS === nbTurn) {
+        return "No way !\nIt's a dredfull draw game !!!";
+    }else if (userS === nbTurn) {
+        return "All right " + userName + " !!!\nYou won da game !";
+    }else if (cmpS === nbTurn) {
+        return "Outch " + userName + ", you loose the game.\nBad luck this time.";
+    }else {return false;}
+}
+
+var userName = "";
+var userChoice = "";
+var cmpChoice;
+var nbTurn = 3;
+var userScore = 0;
+var cmpScore = 0;
 var pfcTab = [
     "rock",
     "paper",
     "scissors"
 ];
+var verif = false;
+var restart = true;
+alert(restart + " " + typeof(restart));
 
-// Create a random value between index of the array between 0-3 here
-var cmpChoice = Math.floor(Math.random() * pfcTab.length);
-cmpChoice = pfcTab[cmpChoice];
-alert("Take notice :\nYour nemesis (thit computer) choosed :\n" + cmpChoice);
 
-// Time to confront both player
+// Restart the game loop
 
-// first test equality
-if (userChoice === cmpChoice) {
-    alert("Oh no !!!!\nIt's a draw game.\nUnsatisfying ending")
-}else if(userChoice === "rock" && cmpChoice === "scissors" || userChoice === "paper" && cmpChoice === "rock" || userChoice === "scissors" && cmpChoice === "paper") { // test every win solutions
-    alert("All right " + userName + " !!!\nYou won !");
-}else {alert("Outch " + userName + ", you loose.\nBad luck this time.");} // rest the lost solutions
+while (restart !== "false") {
+    welcome();
+    
+    do {userName = prompt("Enter your best gamer Alias :\n(-between 2 and 20 character max-");
+    } while (userName.length < 2 || userName.length > 20)
 
-alert("End of the game.");
+    while (verif) {
+        alert(userInformations());
+        alert(cmpTurn());
+        // Time to confront both player
+        result(userChoice, cmpChoice);
+        alert("Score is :\n" + userName + " = " + userScore + "\nNemesis = " + cmpScore);
+        verif = scoreFinal(userScore, cmpScore);
+    }
+
+    alert(scoreFinal(userScore, cmpScore))
+    alert("End of the game.");
+    restart = prompt("Again ?\nAm I right to say you want to play again ?\nType : true or false"); // not working
+    
+    alert(restart + " " + typeof(restart));
+}
+alert("Goodby !!!");
